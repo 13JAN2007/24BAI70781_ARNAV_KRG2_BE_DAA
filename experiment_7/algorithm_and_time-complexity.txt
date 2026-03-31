@@ -1,0 +1,23 @@
+**Algorithm:**
+
+1. Build an adjacency list from the given flights.
+2. Initialize a queue to perform BFS traversal. Each element stores (stops, current node, current cost).
+3. Initialize a distance array `dist[]` with infinity and set `dist[src] = 0`.
+4. Push the source node into the queue with (0 stops, cost 0).
+5. While the queue is not empty:
+
+   * Pop the front element.
+   * If stops > k, skip further processing.
+   * For each neighbor of the current node:
+
+     * If current cost + edge cost < dist[neighbor]:
+
+       * Update dist[neighbor].
+       * Push (stops + 1, neighbor, updated cost) into the queue.
+6. After traversal, if `dist[dst]` is still infinity, return -1; otherwise return `dist[dst]`.
+
+**Time Complexity:**
+O(K × E), where K is the maximum number of stops allowed and E is the number of flights (edges).
+**Space Complexity:**
+O(N + E), where N is the number of cities (nodes) and E is the number of flights (edges), due to the adjacency list, distance array, and queue used in BFS.
+
